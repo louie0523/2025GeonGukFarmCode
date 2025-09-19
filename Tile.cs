@@ -64,7 +64,7 @@ public class Tile : MonoBehaviour
 
     public void SeedCrop(Crop crop)
     {
-        SfxManager.instance.SoundPlay("ì‹¬ê¸°");
+        SfxManager.instance.SoundPlay("½É±â");
 
         Crop = crop;
         Grow = 1;
@@ -155,7 +155,7 @@ public class Tile : MonoBehaviour
         fullGrow = false;
         Animator ani = autoFamrerObj.GetComponent<Animator>();
         ani.SetTrigger("Farm");
-        SfxManager.instance.SoundPlay("ìë™ìˆ˜í™•");
+        SfxManager.instance.SoundPlay("ÀÚµ¿¼öÈ®");
         for (int i = 0; i < 9; i++)
         {
             if (GridScripts[i].isComplete && !GridScripts[i].DestroyCrop && Storage.Instance.itemSlot.Count < GameManager.Instance.MaxStorage)
@@ -172,7 +172,7 @@ public class Tile : MonoBehaviour
 
     void AllDestoryCrop()
     {
-        SfxManager.instance.SoundPlay("ì‹œë“¦");
+        SfxManager.instance.SoundPlay("½Ãµê");
         for (int i = 0; i < 9; i++)
         {
             DestroyCrop(i);
@@ -210,7 +210,7 @@ public class Tile : MonoBehaviour
 
     void growCheck()
     {
-        //Debug.Log("ì²´í¬");
+        //Debug.Log("Ã¼Å©");
         glowTimer = 0f;
         GorwConditon gorwConditon = GameManager.Instance.GorwConditons[(int)Crop - 1];
         if (gorwConditon.waterlyMin <= wateily && gorwConditon.waterlyMax >= wateily && ConditnTIme() && CondtionWeather())
@@ -229,7 +229,7 @@ public class Tile : MonoBehaviour
             ActShape();
             if (gorwConditon.GrowTime <= Grow || fullGrow)
             {
-                Debug.Log($"{Crop}ì´ ëª¨ë‘ ìëìŠµë‹ˆë‹¤!");
+                Debug.Log($"{Crop}ÀÌ ¸ğµÎ ÀÚ¶ú½À´Ï´Ù!");
                 CurrentGrowStatusImage.sprite = GorwImage;
                 CurrentGrowStatusImage.color = Color.yellow;
                 gridGrowComplete();
@@ -263,18 +263,18 @@ public class Tile : MonoBehaviour
         {
             if(TimeManager.instance.CurrentTime >= gorwConditon.StartTime && TimeManager.instance.CurrentTime <= gorwConditon.EndTIme)
             {
-                //Debug.Log("íŠ¸ë£¨");
+                //Debug.Log("Æ®·ç");
                 return true;
             }
         } else
         {
             if(TimeManager.instance.CurrentTime >= gorwConditon.StartTime | TimeManager.instance.CurrentTime <= gorwConditon.EndTIme)
             {
-                //Debug.Log("ë»˜ì¦ˆ");
+                //Debug.Log("»¹Áî");
                 return true;
             }
         }
-        Debug.Log("í•´ë‹¹ ì‚¬í•­ ì—†ì–´");
+        Debug.Log("ÇØ´ç »çÇ× ¾ø¾î");
         return false;
     }
 
@@ -464,7 +464,7 @@ public class Tile : MonoBehaviour
 
         if(count >= 9)
         {
-            Debug.Log("ëª¨ë“  ì‘ë¬¼ì´ ì‚¬ë¼ì§. íƒ€ì¼ ë¦¬ì…‹");
+            Debug.Log("¸ğµç ÀÛ¹°ÀÌ »ç¶óÁü. Å¸ÀÏ ¸®¼Â");
             ResetTile();
         }
 
@@ -494,7 +494,7 @@ public class Tile : MonoBehaviour
 
         if(rand < AnimalRand)
         {
-            Debug.Log("ì•¼ìƒ ë™ë¬¼ ë‘ë‘ë‘¥ì¥");
+            Debug.Log("¾ß»ı µ¿¹° µÎµÎµÕÀå");
             int rand2 = Random.Range(1, 4);
             CurrentAniaml = rand2;
             CurrentFarming = 0;
@@ -502,7 +502,7 @@ public class Tile : MonoBehaviour
 
             if(GameManager.Instance.CurrentAnimals <= 0)
             {
-                SfxManager.instance.BgmPlay("ì•¼ìƒë™ë¬¼");
+                SfxManager.instance.BgmPlay("¾ß»ıµ¿¹°");
             }
             GameManager.Instance.CurrentAnimals += rand2;
 
